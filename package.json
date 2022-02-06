@@ -1,0 +1,7 @@
+{
+	"name": "com.behaviortreeeditor",
+	"version": "0.0.1",
+	"description": "Unity Behavior Tree editor",
+	"displayName": "Behavior Tree Editor",
+	"unity": "2021.1"
+}

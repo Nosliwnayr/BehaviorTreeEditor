@@ -1,0 +1,78 @@
+#node-border {
+    background-color: rgb(56, 56, 56);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgb(26, 26, 26);
+    border-right-color: rgb(26, 26, 26);
+    border-top-color: rgb(26, 26, 26);
+    border-bottom-color: rgb(26, 26, 26);
+}
+
+#type {
+    display: none;
+}
+
+#selection-border {
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left-color: rgb(0, 192, 255);
+    border-right-color: rgb(0, 192, 255);
+    border-top-color: rgb(0, 192, 255);
+    border-bottom-color: rgb(0, 192, 255);
+}
+
+:hover > #selection-border {
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+}
+
+:selected > #selection-border {
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+}
+
+:hover:selected > #selection-border {
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+}
+
+.node {
+    min-width: 125px;
+    min-height: 60px;
+}
+
+#divider {
+    min-width: 1px;
+    min-height: 1px;
+    background-color: rgb(87, 87, 87);
+}
+
+.leaf #title {
+    background-color: rgba(244, 65, 42, 255);
+}
+
+.control #title {
+    background-color: rgba(166, 201, 84, 255);
+}
+
+.decorator #title {
+    background-color: rgba(10, 255, 255, 255);
+}
