@@ -34,10 +34,10 @@ namespace BehaviorTree
             VisualElement root = rootVisualElement;
 
             // Import UXML
-            var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Packages/com.behaviortreeeditor/Editor/UIBuilder/BehaviorTreeEditor.uxml");
+            var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(AssetDatabase.GUIDToAssetPath("87974c575fcf127b1a89339bc51b2576"));
             visualTree.CloneTree(root);
 
-            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Packages/com.behaviortreeeditor/Editor/UIBuilder/BehaviorTreeEditor.uss");
+            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(AssetDatabase.GUIDToAssetPath("2d662e239946309de9e9eea7ad151345"));
             root.styleSheets.Add(styleSheet);
 
             treeView = root.Q<BehaviorTreeView>();

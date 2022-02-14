@@ -14,7 +14,7 @@ namespace BehaviorTree
         public Port input;
         public List<Port> outputs = new List<Port>();
 
-        public NodeView(Node node) : base("Assets/BehaviorTrees/Editor/UIBuilder/NodeView.uxml")
+        public NodeView(Node node) : base(AssetDatabase.GUIDToAssetPath("c713e1ec1c7833b70b77f7005aaa3880"))
         {
             this.node = node;
             title = node.name;
