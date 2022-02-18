@@ -3,5 +3,25 @@
 	"version": "0.0.1",
 	"description": "Unity Behavior Tree editor",
 	"displayName": "Behavior Tree Editor",
-	"unity": "2021.1"
+	"unity": "2021.1",
+	"author": {
+		"name": "Ryan Heath",
+		"email": "ryan.k.heath@gmail.com",
+		"url": "https://www.ryankheath.com/"
+	},
+	"changelogUrl": "https://github.com/Nosliwnayr/BehaviorTreeEditor/blob/main/Changelog.md",
+	"documentationUrl": "https://github.com/Nosliwnayr/BehaviorTreeEditor/wiki",
+	"keywords": [
+		"AI",
+		"Editor"
+	],
+	"license": "MIT",
+	"licensesUrl": "https://github.com/Nosliwnayr/BehaviorTreeEditor/blob/main/LICENSE.md",
+	"samples": [
+		{
+			"displayName": "Basic Sample",
+			"description": "Basic sample using built in nodes",
+			"path": "Samples~/BasicSample"
+		}
+	]
 }

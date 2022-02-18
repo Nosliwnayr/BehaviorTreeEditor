@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEditor;
 
@@ -7,7 +8,7 @@ namespace BehaviorTree
     /// <summary>
     /// Behavior Tree data
     /// </summary>
-    [CreateAssetMenu(fileName = "BehaviorTree", menuName = "BehaviorTreeEditor/BehaviorTree")]
+    [CreateAssetMenu(fileName = "BehaviorTree", menuName = "BehaviorTree", order = int.MaxValue)]
     public class BehaviorTree : ScriptableObject
     {
         /// <summary>
@@ -25,6 +26,17 @@ namespace BehaviorTree
         /// </summary>
         public List<Node> nodes = new List<Node>();
 
+
+        /// <summary>
+        /// Tree level blackboard. All agents that use this tree will share this blackboard instance
+        /// </summary>
+        static public Dictionary<string, dynamic> TreeBlackboard = new Dictionary<string, dynamic> { };
+
+        /// <summary>
+        /// Tree private blackboard
+        /// </summary>
+        static private Dictionary<string, dynamic> Blackboard = new Dictionary<string, dynamic> { };
+
         /// <summary>
         /// Execute the behavior tree (root node)
         /// </summary>
@@ -38,7 +50,12 @@ namespace BehaviorTree
             return treeState;
         }
 
-        public Node CreateNode(System.Type type)
+        /// <summary>
+        /// Editor create a node in this tree
+        /// </summary>
+        /// <param name="type">Type of node to create</param>
+        /// <returns>The new node</returns>
+        public Node CreateNode(Type type)
         {
             Node node = ScriptableObject.CreateInstance(type) as Node;
             node.name = type.Name;
@@ -58,17 +75,24 @@ namespace BehaviorTree
             return node;
         }
 
+        /// <summary>
+        /// Editor delete node
+        /// </summary>
+        /// <param name="node">The node to delete</param>
         public void DeleteNode(Node node)
         {
             Undo.RecordObject(this, "Behavior Tree (Delete Node)");
             nodes.Remove(node);
 
-            //AssetDatabase.RemoveObjectFromAsset(node);
-            // superceded by this:
             Undo.DestroyObjectImmediate(node);
             AssetDatabase.SaveAssets();
         }
 
+        /// <summary>
+        /// Editor create parent child relationship
+        /// </summary>
+        /// <param name="parent">The parent node</param>
+        /// <param name="child">The child node</param>
         public void AddChild(Node parent, Node child)
         {
             if (parent is Decorator)
@@ -94,6 +118,11 @@ namespace BehaviorTree
             }
         }
 
+        /// <summary>
+        /// Editor remove parent child relationship
+        /// </summary>
+        /// <param name="parent">The parent node</param>
+        /// <param name="child">The child node</param>
         public void RemoveChild(Node parent, Node child)
         {
             if (parent is Decorator)
@@ -119,6 +148,11 @@ namespace BehaviorTree
             }
         }
 
+        /// <summary>
+        /// Get the children of a node
+        /// </summary>
+        /// <param name="parent">The parent node</param>
+        /// <returns>The children of the node</returns>
         public List<Node> GetChildren(Node parent)
         {
             List<Node> children = new List<Node>();
@@ -150,7 +184,12 @@ namespace BehaviorTree
             return children;
         }
 
-        private void Traverse(Node node, System.Action<Node> visitor)
+        /// <summary>
+        /// Traverse the node tree calling the visitor action on each node
+        /// </summary>
+        /// <param name="node">root node to traverse</param>
+        /// <param name="visitor">action to call on each node</param>
+        private void Traverse(Node node, Action<Node> visitor)
         {
             if (!node)
             {
@@ -162,7 +201,12 @@ namespace BehaviorTree
             children.ForEach((n) => Traverse(n, visitor));
         }
 
-        public BehaviorTree Clone()
+        /// <summary>
+        /// Runtime clone tree
+        /// </summary>
+        /// <param name="parent">The owner of the new clone</param>
+        /// <returns>The cloned tree</returns>
+        public BehaviorTree Clone(object parent)
         {
             BehaviorTree tree = Instantiate(this);
             tree.rootNode = rootNode.Clone();
@@ -170,6 +214,11 @@ namespace BehaviorTree
             Traverse(tree.rootNode, (n) =>
             {
                 tree.nodes.Add(n);
+                if (n is Leaf)
+                {
+                    Leaf l = n as Leaf;
+                    l.SetParent(parent);
+                }
             });
             // TODO: optimize this from N^2 if it's an issue
             foreach (Node node in nodes)
