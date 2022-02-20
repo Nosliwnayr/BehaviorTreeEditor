@@ -24,18 +24,18 @@ namespace BehaviorTree
         /// <summary>
         /// What nodes belong to this tree. A tree could have detached nodes in the editor
         /// </summary>
-        public List<Node> nodes = new List<Node>();
+        public List<Node> nodes = new();
 
 
         /// <summary>
         /// Tree level blackboard. All agents that use this tree will share this blackboard instance
         /// </summary>
-        static public Dictionary<string, dynamic> TreeBlackboard = new Dictionary<string, dynamic> { };
+        static public Dictionary<string, dynamic> TreeBlackboard = new();
 
         /// <summary>
         /// Tree private blackboard
         /// </summary>
-        static private Dictionary<string, dynamic> Blackboard = new Dictionary<string, dynamic> { };
+        static private Dictionary<string, dynamic> Blackboard = new();
 
         /// <summary>
         /// Execute the behavior tree (root node)
@@ -57,7 +57,7 @@ namespace BehaviorTree
         /// <returns>The new node</returns>
         public Node CreateNode(Type type)
         {
-            Node node = ScriptableObject.CreateInstance(type) as Node;
+            Node node = CreateInstance(type) as Node;
             node.name = type.Name;
             node.guid = GUID.Generate().ToString();
 
@@ -155,7 +155,7 @@ namespace BehaviorTree
         /// <returns>The children of the node</returns>
         public List<Node> GetChildren(Node parent)
         {
-            List<Node> children = new List<Node>();
+            List<Node> children = new();
 
             if (parent is Decorator)
             {

@@ -9,10 +9,14 @@ namespace BehaviorTree
 {
     public class NodeView : UnityEditor.Experimental.GraphView.Node
     {
+        const int HEAT_MAX = 5;
+
         public Action<NodeView> OnNodeSelected;
         public Node node;
         public Port input;
-        public List<Port> outputs = new List<Port>();
+        public List<Port> outputs = new();
+        private VisualElement heatDisplay;
+        private float heat;
 
         public NodeView(Node node) : base(AssetDatabase.GUIDToAssetPath("c713e1ec1c7833b70b77f7005aaa3880"))
         {
@@ -28,6 +32,15 @@ namespace BehaviorTree
             CreateInputPorts();
             CreateOutputPorts();
             SetupUXMLClasses();
+
+            // store heat display so we can use it for heatmap information
+            heatDisplay = contentContainer.Q<VisualElement>("heat-display");
+            node.updateHeat = UpdateHeat;
+        }
+
+        ~NodeView()
+        {
+            node.updateHeat = null;
         }
 
         private void SetupUXMLClasses()
@@ -104,6 +117,33 @@ namespace BehaviorTree
             {
                 OnNodeSelected.Invoke(this);
             }
+        }
+
+        public void UpdateHeat()
+        {
+            if (node.running && node.state == Node.State.Running)
+            {
+                heat += Time.deltaTime;
+            }
+            else
+            {
+                heat -= Time.deltaTime / 10;
+            }
+            heat = Math.Clamp(heat, 0, HEAT_MAX);
+
+            UpdateHeatDisplay();
+        }
+
+        private void UpdateHeatDisplay()
+        {
+            heatDisplay.style.borderTopWidth = heat;
+            heatDisplay.style.borderRightWidth = heat;
+            heatDisplay.style.borderBottomWidth = heat;
+            heatDisplay.style.borderLeftWidth = heat;
+            heatDisplay.style.borderTopColor = Color.Lerp(Color.green, Color.red, heat / HEAT_MAX);
+            heatDisplay.style.borderRightColor = Color.Lerp(Color.green, Color.red, heat / HEAT_MAX);
+            heatDisplay.style.borderBottomColor = Color.Lerp(Color.green, Color.red, heat / HEAT_MAX);
+            heatDisplay.style.borderLeftColor = Color.Lerp(Color.green, Color.red, heat / HEAT_MAX);
         }
     }
 }

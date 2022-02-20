@@ -18,8 +18,10 @@ namespace BehaviorTree
         }
 
         public State state { get; protected set; }
-        private bool running = false;
+        public bool running { get; private set; } = false;
         public string guid;
+
+        public System.Action updateHeat;
 
         /// <summary>
         /// Editor position
@@ -45,6 +47,8 @@ namespace BehaviorTree
                 OnStop();
                 running = false;
             }
+
+            updateHeat?.Invoke();
 
             return state;
         }

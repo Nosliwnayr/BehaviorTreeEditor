@@ -127,12 +127,12 @@ namespace BehaviorTree
                 return;
             }
 
-            NodeView nodeView = new NodeView(node);
+            NodeView nodeView = new(node);
             nodeView.OnNodeSelected = OnNodeSelected;
             AddElement(nodeView);
         }
 
-        private void CreateNode(System.Type type)
+        private void CreateNode(Type type)
         {
             Node node = tree.CreateNode(type);
 

@@ -33,6 +33,21 @@
     border-bottom-color: rgb(0, 192, 255);
 }
 
+#heat-display {
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-left-color: rgba(255, 255, 255, 255);
+    border-right-color: rgba(255, 255, 255, 255);
+    border-top-color: rgba(255, 255, 255, 255);
+    border-bottom-color: rgba(255, 255, 255, 255);
+}
+
 :hover > #selection-border {
     border-left-width: 1px;
     border-right-width: 1px;
@@ -66,13 +81,13 @@
 }
 
 .leaf #title {
-    background-color: rgba(244, 65, 42, 255);
+    background-color: rgb(244, 65, 42);
 }
 
 .control #title {
-    background-color: rgba(166, 201, 84, 255);
+    background-color: rgb(166, 201, 84);
 }
 
 .decorator #title {
-    background-color: rgba(10, 255, 255, 255);
+    background-color: rgb(10, 255, 255);
 }

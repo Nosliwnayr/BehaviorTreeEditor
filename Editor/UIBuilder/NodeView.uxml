@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
-    <Style src="project://database/Assets/BehaviorTrees/Editor/UIBuilder/NodeViewStyle.uss?fileID=7433441132597879392&amp;guid=bc6752950780592f6bf132eeb6fcf541&amp;type=3#NodeViewStyle" />
+    <Style src="project://database/Packages/com.behaviortreeeditor/Editor/UIBuilder/NodeViewStyle.uss?fileID=7433441132597879392&amp;guid=bc6752950780592f6bf132eeb6fcf541&amp;type=3#NodeViewStyle" />
     <ui:VisualElement name="node-border" style="flex-grow: 1;">
         <ui:VisualElement name="title" style="align-items: center; -unity-font-style: bold; font-size: 16px;">
             <ui:Label name="title-label" text="DebugLog" class="unity-text-element unity-label" style="font-size: 18px; -unity-font-style: bold; color: rgb(0, 0, 0); -unity-text-align: middle-center;" />
@@ -17,4 +17,5 @@
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="selection-border" picking-mode="Ignore" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; align-items: flex-end; flex-grow: 1;" />
+    <ui:VisualElement name="heat-display" picking-mode="Ignore" style="position: absolute; left: 2px; top: 2px; right: 2px; bottom: 2px; align-items: flex-end; flex-grow: 1;" />
 </ui:UXML>
