@@ -9,7 +9,7 @@ namespace BehaviorTree
         [SerializeField]
         private float delaySeconds = 1;
 
-        private async void delay()
+        private async void DelaySuccess()
         {
             await Task.Delay(TimeSpan.FromSeconds(delaySeconds));
             state = State.Success;
@@ -17,7 +17,7 @@ namespace BehaviorTree
 
         protected override void OnStart()
         {
-            delay();
+            DelaySuccess();
         }
 
         protected override void OnStop()

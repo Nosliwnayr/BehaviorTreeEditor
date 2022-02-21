@@ -121,7 +121,7 @@ namespace BehaviorTree
 
         public void UpdateHeat()
         {
-            if (node.running && node.state == Node.State.Running)
+            if (node.running)
             {
                 heat += Time.deltaTime;
             }

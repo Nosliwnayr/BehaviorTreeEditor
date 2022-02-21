@@ -41,14 +41,13 @@ namespace BehaviorTree
             }
 
             state = OnUpdate();
+            updateHeat?.Invoke();
 
             if (state == State.Failure || state == State.Success)
             {
                 OnStop();
                 running = false;
             }
-
-            updateHeat?.Invoke();
 
             return state;
         }
