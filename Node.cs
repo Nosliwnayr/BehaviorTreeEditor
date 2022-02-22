@@ -1,4 +1,6 @@
 using UnityEngine;
+using System;
+using System.Collections.Generic;
 
 namespace BehaviorTree
 {
@@ -21,7 +23,41 @@ namespace BehaviorTree
         public bool running { get; private set; } = false;
         public string guid;
 
-        public System.Action updateHeat;
+        public Action updateHeat;
+
+        public Dictionary<string, dynamic> TreeBlackboard;
+
+        /// <summary>
+        /// Tree private blackboard
+        /// </summary>
+        public Dictionary<string, dynamic> Blackboard;
+
+        public dynamic BlackboardGet(string key)
+        {
+            if (Blackboard.ContainsKey(key))
+            {
+                return Blackboard[key];
+            }
+            return TreeBlackboard[key];
+        }
+
+        public void BlackboardSet(string key, dynamic value)
+        {
+            if (Debug.isDebugBuild && TreeBlackboard.ContainsKey(key))
+            {
+                Debug.LogWarning($"Shadowing Tree Blackboard value at {key}");
+            }
+            Blackboard[key] = value;
+        }
+
+        public void TreeBlackboardSet(string key, dynamic value)
+        {
+            if (Debug.isDebugBuild && Blackboard.ContainsKey(key))
+            {
+                Debug.LogWarning($"Tree Blackboard value at {key} shadowed by private blackboard value");
+            }
+            TreeBlackboard[key] = value;
+        }
 
         /// <summary>
         /// Editor position

@@ -35,7 +35,7 @@ namespace BehaviorTree
         /// <summary>
         /// Tree private blackboard
         /// </summary>
-        static private Dictionary<string, dynamic> Blackboard = new();
+        private Dictionary<string, dynamic> Blackboard = new();
 
         /// <summary>
         /// Execute the behavior tree (root node)
@@ -60,6 +60,8 @@ namespace BehaviorTree
             Node node = CreateInstance(type) as Node;
             node.name = type.Name;
             node.guid = GUID.Generate().ToString();
+            node.Blackboard = Blackboard;
+            node.TreeBlackboard = Blackboard;
 
             Undo.RecordObject(this, "Behavior Tree (Create Node)");
             nodes.Add(node);
