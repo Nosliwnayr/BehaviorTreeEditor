@@ -12,7 +12,7 @@ namespace BehaviorTree
         public Action<NodeView> OnNodeSelected;
 
         private new class UxmlFactory : UxmlFactory<BehaviorTreeView, GraphView.UxmlTraits> { }
-        BehaviorTree tree;
+        public BehaviorTree tree;
 
         public BehaviorTreeView()
         {
@@ -132,10 +132,10 @@ namespace BehaviorTree
             AddElement(nodeView);
         }
 
-        private void CreateNode(Type type)
+        public void CreateNode(Type type)
         {
             Node node = tree.CreateNode(type);
-
+            node.position = -viewTransform.position + new UnityEngine.Vector3(resolvedStyle.width, resolvedStyle.height) / 2.0f;
             CreateNodeView(node);
         }
 
