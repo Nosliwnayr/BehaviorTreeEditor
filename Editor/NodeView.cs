@@ -33,6 +33,9 @@ namespace BehaviorTree
             CreateOutputPorts();
             SetupUXMLClasses();
 
+            TextElement description = contentContainer.Q<TextElement>("description");
+            description.text = node.Description;
+
             // store heat display so we can use it for heatmap information
             heatDisplay = contentContainer.Q<VisualElement>("heat-display");
             node.updateHeat = UpdateHeat;

@@ -2,6 +2,8 @@ namespace BehaviorTree
 {
     public class Sequencer : Control
     {
+        public override string Description => "Plays Children in Order";
+
         int currentChild;
 
         protected override void OnStart()

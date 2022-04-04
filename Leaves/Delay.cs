@@ -6,6 +6,8 @@ namespace BehaviorTree
 {
     public class Delay : Leaf
     {
+        public override string Description => "Delay execution for X seconds";
+
         [SerializeField]
         private float delaySeconds = 1;
 

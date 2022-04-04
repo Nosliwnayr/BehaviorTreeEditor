@@ -2,6 +2,8 @@ namespace BehaviorTree
 {
     public class RootNode : Node
     {
+        public override string Description => "Tree Execution Start";
+
         public Node child;
 
         public override Node Clone()

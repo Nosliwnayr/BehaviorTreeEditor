@@ -23,6 +23,8 @@ namespace BehaviorTree
         public bool running { get; private set; } = false;
         public string guid;
 
+        public abstract string Description { get; }
+
         public Action updateHeat;
 
         public Dictionary<string, dynamic> TreeBlackboard;
