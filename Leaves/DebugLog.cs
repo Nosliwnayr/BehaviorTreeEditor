@@ -4,7 +4,7 @@ namespace BehaviorTree
 {
     public class DebugLog : Leaf
     {
-        public override string Description => "";
+        public override string Description => "Print a log message";
 
         public enum DebugLevel
         {

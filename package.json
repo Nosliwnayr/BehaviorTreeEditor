@@ -22,6 +22,11 @@
 			"displayName": "Basic Sample",
 			"description": "Basic sample using built in nodes",
 			"path": "Samples~/BasicSample"
+		},
+		{
+			"displayName": "Custom Nodes Sample",
+			"description": "Basic sample using custom nodes",
+			"path": "Samples~/CustomNodesSample"
 		}
 	]
 }

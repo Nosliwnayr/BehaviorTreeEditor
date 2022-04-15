@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8232879510886744187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76127fef8e72408939d6207cfcd0c368, type: 3}
+  m_Name: Sequencer
+  m_EditorClassIdentifier: 
+  guid: 4f27572798e2f4973a7251b5ae9e354a
+  position: {x: 396.05002, y: -35.000004}
+  children:
+  - {fileID: 5426221988670956205}
+  - {fileID: -6239384427766432644}
+  - {fileID: 2723309522433121911}
+  - {fileID: -4165216677435410210}
+--- !u!114 &-6239384427766432644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b245223daa7940cb6f5611f5603c18, type: 3}
+  m_Name: DebugLog
+  m_EditorClassIdentifier: 
+  guid: 710ff71c3bb22598d921fe5bcb7f09d3
+  position: {x: 671, y: -41}
+  debugLevel: 0
+  text: '#2'
+--- !u!114 &-4165216677435410210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b245223daa7940cb6f5611f5603c18, type: 3}
+  m_Name: DebugLog
+  m_EditorClassIdentifier: 
+  guid: 9b6cab33727fca753baca8000af34e66
+  position: {x: 671, y: 95}
+  debugLevel: 0
+  text: '#3'
+--- !u!114 &-1699682151827610213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9371beb1829c42f5b3f268dc0a825d9, type: 3}
+  m_Name: Repeat
+  m_EditorClassIdentifier: 
+  guid: 29df33324b9d83510b2cc111f1873003
+  position: {x: 181, y: 8}
+  child: {fileID: -8232879510886744187}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c02ce6690f2b5b8aa4ac082bf6132b9, type: 3}
+  m_Name: BehaviorTree
+  m_EditorClassIdentifier: 
+  rootNode: {fileID: 3293715501354491445}
+  nodes:
+  - {fileID: 3293715501354491445}
+  - {fileID: -1699682151827610213}
+  - {fileID: -8232879510886744187}
+  - {fileID: 5426221988670956205}
+  - {fileID: -4165216677435410210}
+  - {fileID: -6239384427766432644}
+  - {fileID: 2723309522433121911}
+--- !u!114 &2723309522433121911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790763fc74fed4773a56b0f7a79186fc, type: 3}
+  m_Name: Delay
+  m_EditorClassIdentifier: 
+  guid: cb6412389f67188d8a1eecf06f1145c2
+  position: {x: 671, y: 27}
+  delaySeconds: 0.25
+--- !u!114 &3293715501354491445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3acac4f80892a41d8af63e32456c179, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  guid: 900d17940143d034cb9bc12375ae168b
+  position: {x: -16.942352, y: 7.999999}
+  child: {fileID: -1699682151827610213}
+--- !u!114 &5426221988670956205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b245223daa7940cb6f5611f5603c18, type: 3}
+  m_Name: DebugLog
+  m_EditorClassIdentifier: 
+  guid: c4e27adbd6495e239bfe6e6bd7ba3c79
+  position: {x: 671, y: -115}
+  debugLevel: 0
+  text: '#1'
